@@ -6,9 +6,9 @@ export const Button = styled.button`
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #50C863;
+    background-color: #fff;
     border-radius: 3px;
-    color: white;
+    color: black;
     font-size: 18px;
     margin: 30px 0;    
     border: none;
@@ -19,11 +19,7 @@ export const Button = styled.button`
     font-weight: bold;
   font-family: 'inter', sans-serif;
     cursor: pointer;
-    svg {
-
-        font-size: 30px;
-        margin-left: 10px;
-    }
+   
     &:hover {
         background-color: #29d657;
     }

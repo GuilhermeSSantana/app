@@ -5,6 +5,7 @@ import { useState } from "react";
 import { api } from "../../api/api";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ComponentButton from "../../common/Button";
 // import useBancos from "../../common/Zustend/Bancos";
 
 export default function Bancos() {
@@ -22,11 +23,11 @@ export default function Bancos() {
         console.log(error);
       });
   };
- 
 
   const deletarBancos = () => {
-    api
-    console.log(data.id)
+    api;
+    console
+      .log(data.id)
       .delete(`/bancos/${bancos.id}`)
       .then(() => {
         buscarBancos();
@@ -51,24 +52,7 @@ export default function Bancos() {
       dataIndex: "tipoConta",
       key: "tipoConta",
     },
-    {
-      title: "Cadastrar",
-      dataIndex: "acoes",
-      key: "acoes",
-      render: () => {
-        return (
-          <>
-            <Button
-              onClick={() => {
-                navigate("/Bancos/criar");
-              }}
-            >
-              Cadastrar
-            </Button>
-          </>
-        );
-      },
-    },
+
     {
       title: "Editar",
       dataIndex: "acoes",
@@ -109,13 +93,20 @@ export default function Bancos() {
       nome: banco.name,
       tipoConta: banco.tipoConta,
     };
-    
   });
 
   return (
     <>
       <Header />
+
       <Tabela>
+        <ComponentButton
+          onClick={() => {
+            navigate("/Bancos/criar");
+          }}
+          text="Cadastrar novo banco"
+          style={{ width: "27%", marginBottom: "20px", marginLeft: "73%" }}
+        />
         <Table columns={columns} dataSource={data} />
       </Tabela>
     </>
