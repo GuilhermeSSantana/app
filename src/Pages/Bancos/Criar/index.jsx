@@ -1,10 +1,11 @@
-
-
+import Header from "../../../common/Header";
 
 export default function Criar() {
-    return (
-        <>
-            <h1>Criar</h1>
-        </>
-    );
+  return (
+    <>
+      <Header />
+
+      <h1>Criar</h1>
+    </>
+  );
 }

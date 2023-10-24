@@ -5,16 +5,31 @@ import { useState } from "react";
 import { api } from "../../api/api";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import useBancos from "../../common/Zustend/Bancos";
 
 export default function Bancos() {
   const [bancos, setBancos] = useState([]);
   const navigate = useNavigate();
+  // const setBancosId = useBancos((state) => state.bancosId);
 
   const buscarBancos = () => {
     api
       .get("/bancos")
       .then((response) => {
         setBancos(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+ 
+
+  const deletarBancos = () => {
+    api
+    console.log(data.id)
+      .delete(`/bancos/${bancos.id}`)
+      .then(() => {
+        buscarBancos();
       })
       .catch((error) => {
         console.log(error);
@@ -44,10 +59,12 @@ export default function Bancos() {
         return (
           <>
             <Button
-                onClick={() => {
-                    navigate("/Bancos/criar");
-                }}
-            >Cadastrar</Button>
+              onClick={() => {
+                navigate("/Bancos/criar");
+              }}
+            >
+              Cadastrar
+            </Button>
           </>
         );
       },
@@ -71,7 +88,15 @@ export default function Bancos() {
       render: () => {
         return (
           <>
-            <Button>Deletar</Button>
+            <Button
+              onClick={() => {
+                deletarBancos(
+                  data.id // <== aqui
+                );
+              }}
+            >
+              Deletar
+            </Button>
           </>
         );
       },
@@ -84,6 +109,7 @@ export default function Bancos() {
       nome: banco.name,
       tipoConta: banco.tipoConta,
     };
+    
   });
 
   return (
